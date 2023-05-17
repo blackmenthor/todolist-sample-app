@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_uol_sample/main/create_dialog.dart';
 import 'package:flutter_uol_sample/main/empty_card.dart';
 import 'package:flutter_uol_sample/main/main_card.dart';
 import 'package:flutter_uol_sample/main/todo.dart';
@@ -25,8 +26,16 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        onPressed: () {
-          // TODO: ON ADD
+        onPressed: () async {
+          final resp = await showCreateDialog(
+              context: context,
+              color: widget.color.color,
+          );
+          if (resp == null) return;
+
+          setState(() {
+            _todo[resp.id] = resp;
+          });
         },
         backgroundColor: const Color(0xFF24A19C),
         child: const Icon(
@@ -84,8 +93,17 @@ class _MainPageState extends State<MainPage> {
                                 _todo = _todo;
                               });
                             },
-                            onUpdate: () {
-                              // TODO: ON UPDATE
+                            onUpdate: () async {
+                              final resp = await showCreateDialog(
+                                  context: context,
+                                  todo: todo,
+                                  color: widget.color.color,
+                              );
+                              if (resp == null) return;
+
+                              setState(() {
+                                _todo[resp.id] = resp;
+                              });
                             },
                           ),
                         );
