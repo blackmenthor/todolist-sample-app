@@ -1,0 +1,58 @@
+name: flutter_uol_sample
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  smooth_page_indicator: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  fonts:
+    - family: sf-pro
+      fonts:
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYBLACKITALIC.OTF
+          weight: 800
+          style: italic
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYBOLD.OTF
+          weight: 700
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYHEAVYITALIC.OTF
+          style: italic
+          weight: 700
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYLIGHTITALIC.OTF
+          style: italic
+          weight: 400
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF
+          weight: 600
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF
+          weight: 400
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYSEMIBOLDITALIC.OTF
+          weight: 600
+          style: italic
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYTHINITALIC.OTF
+          weight: 300
+          style: italic
+        - asset: assets/fonts/sf-pro/SFPRODISPLAYULTRALIGHTITALIC.OTF
+          style: italic
+          weight: 200
+
+  assets:
+    - assets/images/logo.png
+    - assets/images/onboarding_1.png
+    - assets/images/onboarding_2.png
