@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_uol_sample/main/empty_card.dart';
 import 'package:flutter_uol_sample/main/main_card.dart';
 import 'package:flutter_uol_sample/main/todo.dart';
 import 'package:flutter_uol_sample/select/select_page.dart';
@@ -17,32 +18,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  late Map<int, Todo> _todo = {
-    1: Todo(
-      id: 1,
-      title: 'Do Groceries',
-      color: widget.color.color,
-      createdAt: DateTime.now(),
-    ),
-    2: Todo(
-      id: 2,
-      title: 'Walk dog to the park',
-      color: widget.color.color,
-      createdAt: DateTime.now(),
-    ),
-    3: Todo(
-      id: 3,
-      title: 'Water the plant',
-      color: widget.color.color,
-      createdAt: DateTime.now(),
-    ),
-    4: Todo(
-      id: 4,
-      title: 'Do Groceries',
-      color: widget.color.color,
-      createdAt: DateTime.now(),
-    ),
-  };
+  late Map<int, Todo> _todo = {};
 
   @override
   Widget build(BuildContext context) {
@@ -87,30 +63,36 @@ class _MainPageState extends State<MainPage> {
                 const SizedBox(
                   height: 30,
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: _todo.values.length,
-                    itemBuilder: (context, index) {
-                      final todo = _todo.values.toList()[index];
-                      final key = todo.id;
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: MainCard(
-                          todo: todo,
-                          onDelete: () {
-                            _todo.remove(key);
-                            setState(() {
-                              _todo = _todo;
-                            });
-                          },
-                          onUpdate: () {
-                            // TODO: ON UPDATE
-                          },
-                        ),
-                      );
-                    },
+                if (_todo.isEmpty) ...[
+                  EmptyCard(
+                    color: widget.color.color,
                   ),
-                ),
+                ] else ...[
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: _todo.values.length,
+                      itemBuilder: (context, index) {
+                        final todo = _todo.values.toList()[index];
+                        final key = todo.id;
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: MainCard(
+                            todo: todo,
+                            onDelete: () {
+                              _todo.remove(key);
+                              setState(() {
+                                _todo = _todo;
+                              });
+                            },
+                            onUpdate: () {
+                              // TODO: ON UPDATE
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
